@@ -1,0 +1,10 @@
+Análise da Falha: 
+Sempre que um dispositivo tenta se comunicar com um destino localizado fora de sua própria rede local (diferente escopo de sub-rede definido pela máscara de sub-rede), o sistema operacional não envia o pacote diretamente ao destino via endereço MAC.
+Em vez disso, a tabela de roteamento do host direciona os pacotes para o endereço configurado como Gateway Padrão (o roteador encarregado da Camada 3).
+Como a topologia utilizava apenas um Switch de Camada 2 (que toma decisões de encaminhamento estritamente baseadas em endereços MAC na Camada de Enlace) e o campo de Default Gateway estava vazio/inexistente, os pacotes não puderam ser roteados para a sub-rede de destino, resultando no timeout.
+
+Resolução do Problema:
+Para viabilizar a comunicação entre sub-redes distintas, é indispensável a adição de um Roteador (ou um Switch L3 com roteamento inter-VLAN ativado) e a devida configuração do Gateway Padrão nas interfaces dos hosts.
+
+Competência Desenvolvida:
+Análise de tráfego de rede, diagnóstico de falhas de conectividade ICMP e compreensão do comportamento da pilha de protocolos TCP/IP e modelo OSI.
